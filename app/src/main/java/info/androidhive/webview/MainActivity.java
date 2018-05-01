@@ -1,8 +1,11 @@
 package info.androidhive.webview;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -150,6 +154,30 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+//        webView.setDownloadListener(new DownloadListener() {
+//
+//            public void onDownloadStart(String url, String userAgent,
+//                                        String contentDisposition, String mimetype,
+//                                        long contentLength) {
+//
+//                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+//                request.allowScanningByMediaScanner();
+//
+//                request.setNotificationVisibility(
+//                        DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//
+//                request.setDestinationInExternalPublicDir(
+//                        Environment.DIRECTORY_DOWNLOADS,    //Download folder
+//                        "download");                        //Name of file
+//
+//
+//                DownloadManager dm = (DownloadManager) getSystemService(
+//                        DOWNLOAD_SERVICE);
+//
+//                dm.enqueue(request);
+//
+//            }
+//        });
     }
 
     private void renderPost() {
@@ -186,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle("Web View");
+                    collapsingToolbar.setTitle("Coin For Cash");
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");
@@ -196,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // loading toolbar header image
-        Glide.with(getApplicationContext()).load("http://api.androidhive.info/webview/nougat.jpg")
+        Glide.with(getApplicationContext()).load("https://salemnet.vo.llnwd.net/media/cms/CW/faith/13189-Lottery1.1200w.tn.jpg")
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
