@@ -19,13 +19,14 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String postUrl = "http://192.168.1.110:3000";
+    private String postUrl = "";
     private WebView webView;
     private ProgressBar progressBar;
     private float m_downX;
@@ -47,49 +48,37 @@ public class MainActivity extends AppCompatActivity {
             postUrl = getIntent().getStringExtra("postUrl");
         }
 
+        if (!DetectConnection.checkInternetConnection(this)) {
+            Toast.makeText(getApplicationContext(), "No Internet!", Toast.LENGTH_LONG).show();
+//            renderPost();
+        } else {
+            //Tez : com.google.android.apps.nbu.paisa.user
+//            Intent intent = getPackageManager().getLaunchIntentForPackage("net.one97.paytm");
+//            if (intent != null) {
+//                String uriToImage = "file:///android_asset/public/images/paytm_upi.png";
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.setAction(Intent.ACTION_SEND);
+//                intent.putExtra(Intent.EXTRA_STREAM, uriToImage);
+//                intent.setType("image/jpeg");
+//                startActivity(intent);//null pointer check in case package name was not found
+//            }
+//            else{
+//                intent = new Intent(Intent.ACTION_VIEW);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.setData(Uri.parse("market://details?id=" + "net.one97.paytm"));
+//                startActivity(intent);
+//            }
+        }
         initWebView();
-        initCollapsingToolbar();
         renderPost();
+        initCollapsingToolbar();
 
-
-        // enable / disable javascript
         // webView.getSettings().setJavaScriptEnabled(true);
-
-        // loading url into web view
         // webView.loadUrl("http://www.google.com");
-
-        /**
-         * loading custom html into webivew
-         * */
-        /*
-        String customHtml = "<html><body><h1>Hello, WebView</h1> <h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3>" +
-                "<p>This is a sample paragraph.</p></body></html>";
-        webView.loadData(customHtml, "text/html", "UTF-8");
-        */
-
-        /**
-         * Enabling zoom-in controls
-         * */
         /*
         webView.getSettings().setSupportZoom(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(true);
-        */
-
-        // Loading local html file into web view
-        // webView.loadUrl("file:///android_asset/sample.html");
-
-        /**
-         * Loading custom fonts and css
-         * */
-        /*
-        String style = "<style type='text/css'>@font-face { font-family: 'roboto'; src: url('Roboto-Light.ttf');}@font-face { font-family: 'roboto-medium'; src: url('Roboto-Medium.ttf'); }" +
-                "body{color:#666;font-family: 'roboto';padding: 0.3em;}";
-        style += "a{color:" + String.format("#%06X", (0xFFFFFF & ContextCompat.getColor(this, R.color.colorPrimaryDark))) + "}</style>";
-        String customHtml = "<h1>Hello, WebView</h1> <h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3>" +
-                "<p>This is a sample paragraph.</p>";
-        String content = "<html>" + style + "<body'>" + customHtml + "</body></Html>";
-        webView.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
         */
     }
 
@@ -104,15 +93,16 @@ public class MainActivity extends AppCompatActivity {
                  * open the url in the same activity as new intent
                  * else pass the url to browser activity
                  * */
-                if (Utils.isSameDomain(postUrl, url)) {
-                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                    intent.putExtra("postUrl", url);
-                    startActivity(intent);
-                } else {
-                    // launch in-app browser i.e BrowserActivity
+//                if (Utils.isSameDomain(postUrl, url)) {
+//                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//                    intent.putExtra("postUrl", url);
+//                    startActivity(intent);
+//                } else {
+//                    // launch in-app browser i.e BrowserActivity
                     openInAppBrowser(url);
-                }
-
+//                }
+//                return true;
+//                view.loadUrl(url);
                 return true;
             }
 
@@ -180,10 +170,9 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-    private void renderPost() {
+      private void renderPost() {
         webView.loadUrl(postUrl);
-
-        // webView.loadUrl("file:///android_asset/sample.html");
+         webView.loadUrl("file:///android_asset/index.html");
     }
 
     private void openInAppBrowser(String url) {
@@ -214,17 +203,17 @@ public class MainActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle("Coin For Cash");
+                    collapsingToolbar.setTitle("");
                     isShow = true;
                 } else if (isShow) {
-                    collapsingToolbar.setTitle(" ");
+                    collapsingToolbar.setTitle("Coin4Cash");
                     isShow = false;
                 }
             }
         });
 
         // loading toolbar header image
-        Glide.with(getApplicationContext()).load("https://salemnet.vo.llnwd.net/media/cms/CW/faith/13189-Lottery1.1200w.tn.jpg")
+        Glide.with(getApplicationContext()).load("file:///android_asset/public/assets/app/cover.jpg")
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

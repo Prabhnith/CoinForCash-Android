@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- PAGE settings -->
+    <title>Coin4Cash - Play your Luck!!</title>
+    <meta name="description" content="Coin4Cash - Play your Luck!!">
+    <meta name="keywords" content="lottery, money, make-money, paytm, cash">
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="public/neon.css">
+    <link rel="stylesheet" href="public/stylesheets/flipclock.css">
+
+    <script src="public/javascripts/jquery.min.js"></script>
+    <script src="public/javascripts/navbar-ontop.js"></script>
+    <!-- <script src="public/javascripts/smooth-scroll.js"></script> -->
+    <script src="public/javascripts/flipclock.min.js"></script>
+    <!-- <script src="public/javascripts/animate-in.js"></script> -->
+    <script src="public/javascripts/custom.js"></script>
+    <script type="text/javascript">
+        var clock;
+        $(document).ready(function () {
+            let dateNow = new Date();
+            let countDown = ((23 - dateNow.getHours()) * 60 * 60) + ((60 - dateNow.getMinutes()) * 60) + (60 - dateNow.getSeconds());
+            clock = $('.clock').FlipClock(countDown, {
+                clockFace: 'DailyCounter',
+                countdown: true,
+                autoStart: true,
+                showDay: false,
+                callbacks: {
+                    start: function () {
+                        $('.message').html('The clock has started!');
+                    }
+                }
+            });
+            hideHours();
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+<!--     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h2>Coin4Cash</h2>
+            </a>
+        </div>
+    </nav> -->
+    <!-- Cover -->
+    <div class="section-fade-out pt-5" 
+    style="background-image: url(&quot;public/assets/app/cover.jpg&quot;); 
+    background-position: bottom;margin-top: -10%;">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-6 my-5 text-lg-left text-center align-self-center">
+                    <h1 class="display-4">Play your Luck!!</h1>
+                    <p class="lead">Play the draw & check what your fate have for you!!
+                        <br>
+                    </p>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center ">
+                    <h1 style="margin:0 0 60px 40px; width: auto;" class="text-lg-left">Next BIG winner in </h1>
+                    <div class="clock" id="clock" style="zoom: 0.77;-moz-transform: scale(0.77);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Article style section -->
+    <div class="py-5">
+        <div class="container">
+            <div class="row py-5">
+                <!-- <div class="col-md-5 d-none d-sm-block  order-2 order-md-1 animate-in-left">
+                    <img class="img-fluid d-block my-3 mx-auto" src="public/assets/app/iphone_side_dark.png" width="200"> </div> -->
+                <div class="col-md-7 align-self-center order-1 order-md-2 my-3 text-md-left text-center">
+                    <h2 class="display-4">Easy YET Powerful
+                        <br> Participate & WIN</h2>
+                    <p class="my-3">
+                        * Pay the amount to enter into the contest
+                        <br> * Winner would be announced every 12 hours
+                        <br> * From each category, 10 winners will won amount price
+                        <br> * Give more enteries to create your own FORTUNE...
+                        <br>
+                    </p>
+                    <a class="btn btn-outline-primary" href="#features">Enter Contest NOW!!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="p-3" id="rulesDiv">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="pb-4">Get Ready for the show!</h2>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="align-self-center text-md-left col-lg-4 col-md-6 col-xs-12">
+                    <h2 class="pb-4">Rules :</h2>
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Entry Amount </th>
+                                    <th>Winning Amount</th>
+                                    <th>Participant gets </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>1</td>
+                                <td>₹ 300</td>
+                                <td>₹ 5000</td>
+                                <td>₹ 100</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>₹ 200</td>
+                                    <td>₹ 2000</td>
+                                    <td>₹ 20</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>₹ 100</td>
+                                    <td>₹ 1000</td>
+                                    <td>₹ 10</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>₹ 30</td>
+                                    <td>₹ 500</td>
+                                    <td>₹ 0</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>₹ 20</td>
+                                    <td>₹ 200</td>
+                                    <td>₹ 0</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>₹ 10</td>
+                                    <td>₹ 100</td>
+                                    <td>₹ 0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    * Money will get deposited in next 24 working hours.
+                    <!-- </p> -->
+                </div>
+                <div class="my-3 col-md-4 col-sm-12 col-xs-12 d-lg-block ">
+                    <form style="opacity: 0.9;border-top:1px solid #f1cd31;border-bottom:1px solid #f1cd31;padding: 35px;" 
+                    method="post" action="https://coin4cash.herokuapp.com/register">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="name" type="text" pattern="[a-z A-Z]+" class="form-control" placeholder="Enter your name" required>
+                            <small class="form-text text-muted">All the best..</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number (Payment made)</label>
+                            <input name="mobile" type="tel" pattern="^\d{10}$" class="form-control" placeholder="Enter your paytm number" required>
+                            <small class="form-text text-muted">We'll never share your contact with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Contest entry price paid</label>
+                            <input name="amount" type="number" pattern="^[123][0]{1,2}$" min="10" max="300" step="10" title="Only 10,20,30,100,200 and 300 allowed"
+                                class="form-control" placeholder="Only 10,20,30,100,200 and 300 allowed" required>
+                            <small class="form-text text-muted">Get big amount, put in big</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input name="email" type="email" class="form-control" placeholder="Enter email" required>
+                            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <button type="submit" class="btn text-center justify-content-center btn-primary text-capitalize">Submit</button>
+                    </form>
+                </div>
+                <div class="align-self-center text-md-left text-center col-lg-4 col-md-6">
+                    <!-- <img class="img-fluid d-block mx-auto p-2" src="https://crazydealonline.com/wp-content/uploads/2017/09/unnamed-1.png" width="40%"> -->
+                    <div style="margin-bottom: 10px;padding: 5px;">
+                        <h4 style="text-align: center;">Scan QR & Pay Using Paytm</h2>
+                                <img class="img-responsive img-fluid d-block" width="80%" 
+                                style="margin:auto;" src="public/images/paytm_upi.png">
+                    </div>
+                    <h4 style="text-align: center;">Paytm / Tez : 9805830800</h4>
+                    <hr>
+                    <a href=https://securegw.paytm.in/link/46773/LL_17727 rel="im-checkout" data-behaviour="remote" data-style="light" 
+                    data-text="Checkout With Paytm" style="width: 320px;height: 52px;border-radius: 2px;border: solid 1px #00b9f5;background: #ffffff;display: block;font-family: 'Open Sans';font-size: 16px;font-weight: 600;text-align: left;color: #00b9f5;padding: 13px 0;"> <div style="width: 130px;margin: 0 auto;">Pay with<img alt="PayTM" style="height: 26px;margin-left: 5px;position: relative;top: -2px;" src="https://static1.paytm.in/1.4/plogo/paytmLogo.png"></div></a>
+                    <!-- <div class="my-3" style=" margin-top: 10px;padding: 5px;">
+                        <h4 style="">Steps:</h2>
+                            <p class="my-3" style="font-size: 0.7em;">
+                                1. Click on QR code
+                                <br> 2. open image with Paytm App
+                                <br> 3. Pay entry amount
+                                <br> 4. Write message #coinforcash (Optional)
+                                <br> 5. You are good to go
+                                <br>
+                            </p> -->
+                            <!-- <a href="/images/Tez_upi.png" download> -->
+                            <!-- <img class="img-responsive img-fluid d-block" width="50%" style="margin:auto;" src="/images/Tez_upi.png"> -->
+                            <!-- </a> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
